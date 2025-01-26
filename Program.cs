@@ -1,8 +1,5 @@
-﻿using CP77Tools.Tasks;
-using WolvenKit.Common.Conversion;
+﻿using WolvenKit.Common.Conversion;
 using WolvenKit.Common.Services;
-using WolvenKit.Core.Extensions;
-using WolvenKit.Interfaces.Extensions;
 using WolvenKit.RED4.CR2W;
 using WolvenKit.RED4.CR2W.Archive;
 using WolvenKit.RED4.CR2W.JSON;

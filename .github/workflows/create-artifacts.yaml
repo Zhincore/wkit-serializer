@@ -1,0 +1,45 @@
+name: create-artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  console-win:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Publish with Dotnet
+        run: dotnet publish wkit-serializer.csproj -o publish -r win-x64 -c Release --no-self-contained -p:DebugType=None -p:DebugSymbols=false
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wkit-serializer
+          path: ./publish
+
+  console-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Publish with Dotnet
+        run: dotnet publish wkit-serializer.csproj -o publish_linux -r linux-x64 -c Release --no-self-contained -p:DebugType=None -p:DebugSymbols=false
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wkit-serializer-linux
+          path: ./publish_linux

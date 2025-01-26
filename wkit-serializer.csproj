@@ -10,10 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="WolvenKit.Common" Version="8.16.0" />
-    <PackageReference Include="WolvenKit.Core" Version="8.16.0" />
-    <PackageReference Include="WolvenKit.Modkit" Version="8.16.0" />
+    <PackageReference Include="WolvenKit.ModKit" Version="8.16.0" />
     <PackageReference Include="WolvenKit.RED4" Version="8.16.0" />
-    <PackageReference Include="WolvenKit.RED4.Types" Version="1.61.0" />
   </ItemGroup>
 
 </Project>
