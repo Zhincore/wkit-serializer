@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>wkit_serializer</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WolvenKit.Common" Version="8.16.0" />
+    <PackageReference Include="WolvenKit.Core" Version="8.16.0" />
+    <PackageReference Include="WolvenKit.Modkit" Version="8.16.0" />
+    <PackageReference Include="WolvenKit.RED4" Version="8.16.0" />
+    <PackageReference Include="WolvenKit.RED4.Types" Version="1.61.0" />
+  </ItemGroup>
+
+</Project>
