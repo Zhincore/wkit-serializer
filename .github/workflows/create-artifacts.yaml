@@ -18,11 +18,11 @@ jobs:
           dotnet-version: 8.x
 
       - name: Publish with Dotnet
-        run: dotnet publish wkit-serializer.csproj -o publish -r win-x64 -c Release -p:DebugType=None -p:DebugSymbols=false -p:PublishReadyToRun=false
+        run: dotnet publish wolvenkit-ipc.csproj -o publish -r win-x64 -c Release -p:DebugType=None -p:DebugSymbols=false -p:PublishReadyToRun=false
 
       - uses: actions/upload-artifact@v4
         with:
-          name: wkit-serializer
+          name: wolvenkit-ipc
           path: ./publish
 
   console-linux:
@@ -37,9 +37,9 @@ jobs:
           dotnet-version: 8.x
 
       - name: Publish with Dotnet
-        run: dotnet publish wkit-serializer.csproj -o publish_linux -r linux-x64 -c Release -p:DebugType=None -p:DebugSymbols=false -p:PublishReadyToRun=false
+        run: dotnet publish wolvenkit-ipc.csproj -o publish_linux -r linux-x64 -c Release -p:DebugType=None -p:DebugSymbols=false -p:PublishReadyToRun=false
 
       - uses: actions/upload-artifact@v4
         with:
-          name: wkit-serializer-linux
+          name: wolvenkit-ipc-linux
           path: ./publish_linux
