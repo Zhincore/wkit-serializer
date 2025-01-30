@@ -9,9 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WolvenKit.Common" Version="8.16.0" />
-    <PackageReference Include="WolvenKit.ModKit" Version="8.16.0" />
-    <PackageReference Include="WolvenKit.RED4" Version="8.16.0" />
+    <PackageReference Include="WolvenKit.Core" Version="8.16.0">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">compile</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="WolvenKit.Common" Version="8.16.0">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">compile</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="WolvenKit.ModKit" Version="8.16.0">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">compile</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="WolvenKit.RED4" Version="8.16.0">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">compile</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
