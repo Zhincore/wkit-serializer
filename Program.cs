@@ -1,4 +1,5 @@
-﻿using WolvenKit.Common;
+﻿using System.Text;
+using WolvenKit.Common;
 using WolvenKit.Common.Conversion;
 using WolvenKit.Common.Services;
 using WolvenKit.RED4.CR2W;
@@ -24,6 +25,10 @@ var archiveManager = new ArchiveManager(
   loggerService,
   progressService
 );
+
+var serializeOptions = new RedJsonSerializerOptions();
+serializeOptions.SkipHeader = true;
+RedJsonSerializer.Options.WriteIndented = false;
 
 var executable = new FileInfo(Path.Combine(args[0], "bin", "x64", "Cyberpunk2077.exe"));
 archiveManager.LoadGameArchives(executable);
@@ -64,7 +69,7 @@ void Search(string query)
   WriteOutput(string.Join(";", files ?? []));
 }
 
-void Serialize(string path)
+async void Serialize(string path)
 {
   using var file = archiveManager.GetCR2WFile(path, false, false);
   if (file == null)
@@ -74,14 +79,12 @@ void Serialize(string path)
   }
 
   var dto = new RedFileDto(file);
-  var json = RedJsonSerializer.Serialize(dto);
-  if (json == null)
-  {
-    WriteError("Failed to serialize file.");
-    return;
-  }
 
-  WriteOutput(json);
+  using var stdout = Console.OpenStandardOutput();
+  stdout.Write(Encoding.ASCII.GetBytes("[OUTPUT] "));
+  await RedJsonSerializer.SerializeAsync(stdout, dto, serializeOptions);
+  stdout.Write(Encoding.ASCII.GetBytes("\n"));
+  stdout.Flush();
 }
 
 static void WriteError(string message)
