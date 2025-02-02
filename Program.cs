@@ -26,8 +26,10 @@ var archiveManager = new ArchiveManager(
   progressService
 );
 
-var serializeOptions = new RedJsonSerializerOptions();
-serializeOptions.SkipHeader = true;
+var serializeOptions = new RedJsonSerializerOptions
+{
+  SkipHeader = true
+};
 RedJsonSerializer.Options.WriteIndented = false;
 
 var executable = new FileInfo(Path.Combine(args[0], "bin", "x64", "Cyberpunk2077.exe"));
@@ -50,7 +52,7 @@ while (true)
         Search(rest);
         break;
       case "serialize":
-        Serialize(rest);
+        await Serialize(rest);
         break;
       default:
         WriteError("Unknown command.");
@@ -69,7 +71,7 @@ void Search(string query)
   WriteOutput(string.Join(";", files ?? []));
 }
 
-async void Serialize(string path)
+async Task Serialize(string path)
 {
   using var file = archiveManager.GetCR2WFile(path, false, false);
   if (file == null)
